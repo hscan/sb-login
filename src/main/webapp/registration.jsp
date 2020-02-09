@@ -15,20 +15,32 @@
 </head>
 <body>
 	<div class="container" >
-		<form method="POST" action="${contextPath}/login" class="form-singin">
-			<h2 class="form-headiing">Log in</h2>
+		<form:form method="POST" modelAttribute="userForm" class="form-singin">
+			<h2 class="form-signin-heading">Log in</h2>
+			<spring:bind path="username">			
+				<div class="form-group ${staus.error ? 'has-error' : ''}">
+					<form:input path="username" type="text" class="form-control" placeholder="Username"
+								autofocus="true"></form:input>
+					<form:errors path="username"></form:errors>
+				</div>
+			</spring:bind>
+			<spring:bind path="password">
+				<div class="form-group ${status.error ? 'has-error' : ''}">
+					<form:input path="password" type="password" class="form-control" placeholder="true">
+					</form:input>
+					<form:errors path="password"></form:errors>
+				</div>
+			</spring:bind>
+			<spring:bind path="passwordConfirm">
+				<div class="form-group ${status.error ? 'has-error : ''}">
+					<form:input path="passwordConfirm" type="password" clas="form-control"
+								placeholder="Confirm your password"></form:input>
+					<form:errors path="passwordConfirm"></form:errors>
+				</div>
+			</spring:bind>
 			
-			<div class="form-group ${error !== null ? 'has-error' : ''}">
-				<span>${message}</span>
-				<input name="username" type="text" class="form-control" placeholder="Username" autofocus="true" />
-				<input name=password" type="password" class="form-control" placeholder="Password" />
-				<span>${error}</span>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token }" />
-				
-				<button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-				<h4 class="text-center"><a href="${contextPath}/registration">Create an account</a> </h4>
-			</div>
-		</form>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+		</form:form>
 	</div>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="${contextPath}/resource/js/bootstrap.min.js"></script>

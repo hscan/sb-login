@@ -50,7 +50,7 @@ public class UserController {
 	@GetMapping("/login")
 	public String login(Model model, String error, String logout) {
 		if(error != null) {
-			model.addAttribute("error", "USername and Password is invalid.");
+			model.addAttribute("error", "Username and Password is invalid.");
 		}
 		
 		if (logout != null) {
@@ -60,7 +60,7 @@ public class UserController {
 		return "login";
 	}
 	
-	@GetMapping({"/", "/welcomw"})
+	@GetMapping({"/", "/welcome"})
 	public String welcome(Model model) {
 		return "welcome";
 	}
